@@ -13,8 +13,10 @@
     "allowSyntheticDefaultImports": true,
     "removeComments": true,
     "skipLibCheck": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "paths": {}
   },
-  "include": ["src"],
+  "include": ["src", ".eslintrc.cjs"],
   "exclude": ["node_modules", "dist"]
 }
