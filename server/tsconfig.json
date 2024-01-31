@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "target": "es2020",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "target": "ES2016",
+    "module": "CommonJS",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
@@ -14,8 +13,7 @@
     "removeComments": true,
     "skipLibCheck": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "paths": {}
+    "experimentalDecorators": true
   },
   "include": ["src", ".eslintrc.cjs"],
   "exclude": ["node_modules", "dist"]
