@@ -1,4 +1,5 @@
 import { ERepeatTask, ETaskStatus } from '../../../enum';
+import { removeUndefinedProperties } from '../../../utils/functions';
 
 export class UpdateTaskDto {
   constructor(

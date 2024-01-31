@@ -19,7 +19,7 @@ export class SubTaskMapper implements IModelMapper<SubTaskModel, SubTask> {
     taskEntity.name = domain.name;
     taskEntity.status = domain.status;
     taskEntity.created = domain.created;
-    taskEntity.updated = domain.modified;
+    taskEntity.updated = domain.updated;
 
     return taskEntity;
   }

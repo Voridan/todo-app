@@ -1,8 +1,11 @@
-import { IAttachmentModel } from './IAttachmentModel';
+import { TaskModel } from '../task/TaskModel';
 
-export class AttachmentModel implements IAttachmentModel {
+export class AttachmentModel {
   constructor(
-    readonly id: string,
-    readonly location: string
+    public readonly id: string,
+    public readonly location: string,
+    public readonly task: TaskModel,
+    public readonly updated: Date,
+    public readonly created: Date
   ) {}
 }

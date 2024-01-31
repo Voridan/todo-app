@@ -8,10 +8,10 @@ type TokenPair = {
   refreshToken: string;
 };
 
-type TokenPayload = Pick<UserModel, 'id' | 'nickname'>;
+type UserTokenPayload = Pick<UserModel, 'id' | 'nickname'>;
 
 export class TokenService {
-  static getTokenPair(payload: TokenPayload): TokenPair {
+  static getTokenPair(payload: UserTokenPayload): TokenPair {
     const accessToken = jwt.sign(payload, appConfig.ACCESS_SECRET, {
       expiresIn: '1h',
     });
@@ -23,7 +23,7 @@ export class TokenService {
   static verifyToken(
     token: string,
     tokenType = ETokens.accessToken
-  ): TokenPayload {
+  ): UserTokenPayload {
     try {
       let secret = '';
 
@@ -39,7 +39,7 @@ export class TokenService {
         default:
           break;
       }
-      return jwt.verify(token, secret) as TokenPayload;
+      return jwt.verify(token, secret) as UserTokenPayload;
     } catch (error) {
       throw new Error('token unverified');
     }

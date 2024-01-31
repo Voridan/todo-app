@@ -30,7 +30,7 @@ export class User extends BaseEntity {
   imageUrl!: string;
 
   @OneToMany(() => ListsGroup, (listsGroup) => listsGroup.user)
-  listsGroups!: ListsGroup[];
+  listsGroups!: ListsGroup[] | null;
 
   @OneToMany(() => TaskList, (taskList) => taskList.user)
   taskLists!: TaskList[];

@@ -6,7 +6,7 @@ import { Task } from '../../models/typeorm/Task';
 import { AppDataSource } from '../../config/typeorm/dataSource';
 import { NewTaskDto } from '../../../../domain/irepository/taskRepository/DTO/NewTaskDto';
 import { TaskMapper } from '../../mappers/typeorm/TaskMapper';
-import { TaskList } from '../../models/typeorm/TaskList';
+import { TaskListModel } from '../../../../domain/model/taskList/TaskListModel';
 
 export class TaskRepository implements ITaskRepository {
   private readonly taskRepo: Repository<Task>;
@@ -16,7 +16,7 @@ export class TaskRepository implements ITaskRepository {
   }
 
   async add(task: NewTaskDto): Promise<TaskModel> {
-    const taskEntity = this.taskRepo.create(task.fields);
+    const taskEntity = this.taskRepo.create({ ...task.fields });
     await this.taskRepo.insert(taskEntity);
 
     const insertResult = await this.taskRepo.insert(taskEntity);
@@ -28,8 +28,6 @@ export class TaskRepository implements ITaskRepository {
           taskEntity.id
         }   failed. ${taskEntity.created.toDateString()}`
       );
-
-    return new TaskMapper().toDomain(taskEntity);
   }
 
   async getById(id: string): Promise<TaskModel | null> {
@@ -41,7 +39,7 @@ export class TaskRepository implements ITaskRepository {
     return null;
   }
 
-  async getAll(taskList: TaskList): Promise<TaskModel[]> {
+  async getAll(taskList: TaskListModel): Promise<TaskModel[]> {
     const tasks = await this.taskRepo.find({
       relations: ['task_list', 'task'],
       where: { id: taskList.id },

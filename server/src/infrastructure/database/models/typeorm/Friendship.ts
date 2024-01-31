@@ -2,10 +2,9 @@ import { Entity, ManyToOne, JoinColumn, Column } from 'typeorm';
 import { BaseEntity } from './BaseEntity';
 import { User } from './User';
 import { EFriendshipStatus } from '../../../../domain/enum';
-import { IFriendshipModel } from '../../../../domain/model/friendship/IFriendshipModel';
 
 @Entity()
-export class Friendship extends BaseEntity implements IFriendshipModel {
+export class Friendship extends BaseEntity {
   @Column({
     type: 'enum',
     enum: EFriendshipStatus,

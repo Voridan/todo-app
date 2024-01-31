@@ -1,3 +1,5 @@
+import { removeUndefinedProperties } from '../../../utils/functions';
+
 export class UpdateUserDto {
   constructor(
     readonly email?: string,

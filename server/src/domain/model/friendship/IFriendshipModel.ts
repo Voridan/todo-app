@@ -1,11 +1,11 @@
 import { EFriendshipStatus } from '../../enum';
-import { UserModel } from '../user/UserModel';
+import { IUserModel } from '../user/IUserModel';
 
 export interface IFriendshipModel {
   id: string;
   status: EFriendshipStatus;
-  user1: UserModel;
-  user2: UserModel;
+  user1: IUserModel;
+  user2: IUserModel;
   created: Date;
   updated: Date;
 }

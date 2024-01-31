@@ -4,10 +4,9 @@ import { BaseEntity } from './BaseEntity';
 import { TaskList } from './TaskList';
 import { ERepeatTask, ETaskStatus } from '../../../../domain/enum';
 import { Attachment } from './Attachment';
-import { ITaskModel } from '../../../../domain/model/task/ITaskModel';
 
 @Entity()
-export class Task extends BaseEntity implements ITaskModel {
+export class Task extends BaseEntity {
   @Column('text')
   name!: string;
 
@@ -26,7 +25,7 @@ export class Task extends BaseEntity implements ITaskModel {
   @Column('timestamptz', { nullable: true })
   remind!: Date | null;
 
-  @ManyToOne(() => TaskList, (taskList) => taskList.tasks, { nullable: true })
+  @ManyToOne(() => TaskList, (taskList) => taskList.tasks)
   taskList!: TaskList | null;
 
   @OneToMany(() => SubTask, (subtask) => subtask.task)

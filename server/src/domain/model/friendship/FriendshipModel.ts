@@ -1,8 +1,7 @@
 import { EFriendshipStatus } from '../../enum';
 import { UserModel } from '../user/UserModel';
-import { IFriendshipModel } from './IFriendshipModel';
 
-export class FriendshipModel implements IFriendshipModel {
+export class FriendshipModel {
   constructor(
     public readonly id: string,
     public readonly status: EFriendshipStatus,
