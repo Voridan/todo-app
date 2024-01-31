@@ -1,11 +1,11 @@
 import { AttachmentModel } from '../../model/attachment/AttachmentModel';
-import { ITaskModel } from '../../model/task/ITaskModel';
+import { TaskModel } from '../../model/task/TaskModel';
 import { NewAttachmentDto } from './DTO/NewAttachmentDto';
 
 export interface IAttachmentReopsitory {
   add(attachment: NewAttachmentDto): Promise<AttachmentModel>;
   getById(id: string): Promise<AttachmentModel | null>;
-  getAll(task: ITaskModel): Promise<AttachmentModel[]>;
+  getAll(task: TaskModel): Promise<AttachmentModel[]>;
   update(attachment: AttachmentModel): Promise<AttachmentModel | null>;
   delete(id: string): Promise<void>;
 }
